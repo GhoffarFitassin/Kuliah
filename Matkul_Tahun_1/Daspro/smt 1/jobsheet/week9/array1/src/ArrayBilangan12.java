@@ -11,8 +11,8 @@ public class ArrayBilangan12 {
         // System.out.println(bil[1]);
         // System.out.println(bil[2]);
         // System.out.println(bil[3]);
-dd
-        for (int i = 0; i < 4; i++) {
+
+        for (int i = 0; i <= 4; i++) {
             System.out.println(bil[i]);
         }
     }
