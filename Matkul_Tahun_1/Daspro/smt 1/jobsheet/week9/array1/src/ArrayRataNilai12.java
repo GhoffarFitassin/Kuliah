@@ -12,10 +12,17 @@ public class ArrayRataNilai12 {
             System.out.print("Masukkan nilai mahasiswa ke-"+(i+1)+" : ");
             nilaiMhs[i] = sc.nextInt();
         }
+        
+        for (int i = 0; i < nilaiMhs.length; i++) {
+            if (nilaiMhs[i] > 70) {
+                System.out.println("Mahasiswa ke-"+i+" lulus!");
+            } 
+        }
 
         for (int i = 0; i < nilaiMhs.length; i++) {
             total += nilaiMhs[i];
         }
+
 
         rata2 = total/nilaiMhs.length;
         System.out.println("Rata-rata nilai = "+rata2);
