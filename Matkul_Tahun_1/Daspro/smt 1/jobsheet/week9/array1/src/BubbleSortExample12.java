@@ -14,8 +14,13 @@ public class BubbleSortExample12 {
             }
         }
 
-        System.out.println("Hasil pengurutan:");
+        System.out.println("Hasil pengurutan ascending:");
         for (int i = 0; i < intData.length; i++) {
+            System.out.println(intData[i]);
+        }
+        
+        System.out.println("Hasil pengurutan descending:");
+        for (int i = intData.length-1; i >= 0; i--) {
             System.out.println(intData[i]);
         }
     }
