@@ -22,9 +22,12 @@ public class LinearSearch12 {
         for (int i = 0; i < arrayInt.length; i++) {
             if (arrayInt[i] == key) {
                 hasil = i;
+                System.out.println("Key ada di posisi indeks ke-"+hasil);
+                break;
+            } else{
+                System.out.println("Key tidak ditemukan");
                 break;
             }
         }
-        System.out.println("Key ada di posisi indeks ke-"+hasil);
     }
 }
