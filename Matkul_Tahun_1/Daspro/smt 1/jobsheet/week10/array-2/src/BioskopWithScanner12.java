@@ -27,7 +27,12 @@ public class BioskopWithScanner12 {
                         System.out.print("Masukkan kolom: ");
                         kolom = sc.nextInt();
                         if (baris > penonton.length || kolom > penonton.length) {
-                            System.out.println("Kursi Tidak Tersedia");
+                            System.out.println("Kursi Tidak Tersedia!");
+                            notMenu = true;
+                            continue;
+                        }
+                        if (penonton[baris - 1][kolom - 1] != null) {
+                            System.out.println("Kursi Sudah Terisi!");
                             notMenu = true;
                             continue;
                         }
