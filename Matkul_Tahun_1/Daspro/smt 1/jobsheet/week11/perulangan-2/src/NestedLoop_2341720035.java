@@ -13,12 +13,23 @@ public class NestedLoop_2341720035 {
             }
             System.out.println();
         }
-        for (int i = 0; i < temps.length; i++) {
+        int i=0;
+        for (double[] kota : temps) {
+            
             System.out.print("Kota ke-" + (i + 1) + ": ");
-            for (int j = 0; j < temps[0].length; j++) {
-                System.out.print(temps[i][j] + " ");
+            for (double temp : kota) {
+                System.out.print(temp + " ");
+                
             }
             System.out.println();
+            i++;
         }
+        // for (int i = 0; i < temps.length; i++) {
+        //     System.out.print("Kota ke-" + (i + 1) + ": ");
+        //     for (int j = 0; j < temps[0].length; j++) {
+        //         System.out.print(temps[i][j] + " ");
+        //     }
+        //     System.out.println();
+        // }
     }
 }
