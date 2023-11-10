@@ -15,6 +15,11 @@ public class Quiz {
                 int answer = input.nextInt();
                 input.nextLine();
                 success = (answer == number);
+                if (answer > number) {
+                    System.out.println("Inputan Lebih besar");
+                } else if (answer < number) {
+                    System.out.println("Inputan Lebih Kecil");
+                }
             } while (!success);
             System.out.print("Apakah Anda ingin mengulang permainan (Y/y)?");
             menu = input.nextLine().charAt(0);
