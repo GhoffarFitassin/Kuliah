@@ -15,12 +15,14 @@ public class NestedLoop_2341720035 {
         }
         int i=0;
         for (double[] kota : temps) {
-            
+            double avg=0;
             System.out.print("Kota ke-" + (i + 1) + ": ");
             for (double temp : kota) {
                 System.out.print(temp + " ");
-                
+                avg += temp;
             }
+            avg /= kota.length;
+            System.out.printf("\nRata-rata kota ke-"+(i + 1)+": %.1f", (double)avg);
             System.out.println();
             i++;
         }
