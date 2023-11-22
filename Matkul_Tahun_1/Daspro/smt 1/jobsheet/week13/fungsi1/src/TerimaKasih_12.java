@@ -4,7 +4,7 @@ public class TerimaKasih_12 {
         "You inspired in me a love for learning and made me feel like I could ask you anything.");
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         ucapanTerimakasih();
     }
 }
