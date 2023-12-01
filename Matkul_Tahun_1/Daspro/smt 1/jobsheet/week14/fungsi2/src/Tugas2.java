@@ -1,14 +1,14 @@
 public class Tugas2 {
-    static int hitungPangkat(int f, int s) {
+    static int hitungDeret(int f, int s) {
         System.out.print(s);
         if (s >= f) {
             return s;
         } else {
             System.out.print(" + ");
-            return (s + hitungPangkat(f, s + 1));
+            return (s + hitungDeret(f, s + 1));
         }
     }
     public static void main(String[] args) {
-        System.out.print(" = " + hitungPangkat(8, 1));
+        System.out.print(" = " + hitungDeret(8, 1));
     }
 }
