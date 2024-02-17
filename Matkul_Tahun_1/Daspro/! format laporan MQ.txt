@@ -1,6 +1,0 @@
-format laporan: (TNE, space 1,5)
-format Laporan1_Kelas_Nama.pdf
-(nama,nim,kelas)
-font code(courir 10,box)
-hasil run di ss
-pertanyaan dijawab
