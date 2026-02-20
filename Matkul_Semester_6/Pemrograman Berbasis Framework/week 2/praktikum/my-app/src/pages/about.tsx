@@ -3,6 +3,7 @@ export default function About() {
     <div>
       <h1>Tentang Saya</h1>
       <table>
+        <tbody>
           <tr>
             <td>Nama Mahasiswa</td>
             <td>:</td>
@@ -18,6 +19,7 @@ export default function About() {
             <td>:</td>
             <td>D4 Teknik Informatika</td>
           </tr>
+        </tbody>
       </table>
     </div>
   );
