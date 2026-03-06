@@ -1,14 +1,14 @@
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 const BlogPost = () => {
-    const { query } = useRouter();
+  const { query } = useRouter();
 
-    return (
-        <div>
-            <h1>Halaman Blog</h1>
-            <p>Slug: {query.slug}</p>
-        </div>
-    );
+  return (
+    <div>
+      <h1>Halaman Blog</h1>
+      <p>Slug: {query.slug}</p>
+    </div>
+  );
 };
 
 export default BlogPost;
