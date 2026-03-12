@@ -1,0 +1,23 @@
+.main {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.heading {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+  color: #263238;
+}
+
+.description {
+  margin: 0 0 16px;
+  color: #455a64;
+  line-height: 1.55;
+}
+
+.backLink {
+  color: #1565c0;
+  font-weight: 600;
+}
