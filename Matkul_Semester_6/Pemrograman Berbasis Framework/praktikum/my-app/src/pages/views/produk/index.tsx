@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import styles from "../../produk/product.module.scss";
 
 type ProductType = {
   id: string;
@@ -6,74 +6,44 @@ type ProductType = {
   price: number;
   size: string;
   category: string;
+  image: string;
 };
 
-const ProdukPage = () => {
-  //   const [isLogin] = useState(false);
-  //   const { push } = useRouter();
-
-  const [product, setProducts] = useState<ProductType[]>([]);
-  const [isRefreshing, setIsRefreshing] = useState(false);
-
-  const fetchProducts = async () => {
-    setIsRefreshing(true);
-    try {
-      const response = await fetch("/api/produk");
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const responseData = await response.json();
-      setProducts(responseData.data ?? []);
-    } catch (error) {
-      console.error("Error fetching produk:", error);
-    } finally {
-      setIsRefreshing(false);
-    }
-  };
-
-  //   useEffect(() => {
-  //     if (!isLogin) {
-  //       push("/views/auth/login");
-  //     }
-  //   }, [isLogin, push]);
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
+const TampilanProduk = ({ products }: { products: ProductType[] }) => {
   return (
-    <div>
-      <h1>Daftar Produk</h1>
-      <button
-        type="button"
-        onClick={fetchProducts}
-        disabled={isRefreshing}
-        style={{
-          marginBottom: "16px",
-          padding: "10px 16px",
-          backgroundColor: isRefreshing ? "#9CA3AF" : "#2563EB",
-          color: "#FFFFFF",
-          border: "none",
-          borderRadius: "8px",
-          fontSize: "14px",
-          fontWeight: 600,
-          cursor: isRefreshing ? "not-allowed" : "pointer",
-        }}
-      >
-        {isRefreshing ? "Memuat data..." : "Refresh Data"}
-      </button>
-      {product.map((product: ProductType) => (
-        <div key={product.id}>
-          <h2>Nama: {product.name}</h2>
-          <p>Harga: {product.price}</p>
-          <p>Ukuran: {product.size}</p>
-          <p>Kategori: {product.category}</p>
-        </div>
-      ))}
+    <div className={styles.produk}>
+      <h1 className={styles.produk__title}>Daftar Produk</h1>
+      <div className={styles.produk__content}>
+        {products.length > 0 ? (
+          <>
+            {products.map((products: ProductType) => (
+              <div key={products.id} className={styles.produk__content__item}>
+                <div className={styles.produk__content__item__image}>
+                  <img src={products.image} alt={products.name} width={200} className={styles.produk__content__item__image}/>
+                </div>
+                <h4 className={styles.produk__content__item__name}>
+                  {products.name}
+                </h4>
+                <p className={styles.produk__content__item__category}>
+                  {products.category}
+                </p>
+                <p className={styles.produk__content__item__price}>
+                  Rp {products.price.toLocaleString()}
+                </p>
+              </div>
+            ))}
+          </>
+        ) : (
+          <div className={styles.produk__content__skeleton}>
+            <div className={styles.produk__content__skeleton__image}></div>
+            <div className={styles.produk__content__skeleton__name}></div>
+            <div className={styles.produk__content__skeleton__category}></div>
+            <div className={styles.produk__content__skeleton__price}></div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
-export default ProdukPage;
+export default TampilanProduk;
