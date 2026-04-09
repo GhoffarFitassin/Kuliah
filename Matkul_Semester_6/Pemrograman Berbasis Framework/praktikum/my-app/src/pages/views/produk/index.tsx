@@ -1,22 +1,77 @@
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import ProdukListHeroSection from "@/components/produk/ProdukListHeroSection";
-import ProdukListMainSection from "@/components/produk/ProdukListMainSection";
+
+type ProductType = {
+  id: string;
+  name: string;
+  price: number;
+  size: string;
+  category: string;
+};
 
 const ProdukPage = () => {
-//   const [isLogin] = useState(false);
-//   const { push } = useRouter();
+  //   const [isLogin] = useState(false);
+  //   const { push } = useRouter();
 
-//   useEffect(() => {
-//     if (!isLogin) {
-//       push("/views/auth/login");
-//     }
-//   }, [isLogin, push]);
+  const [product, setProducts] = useState<ProductType[]>([]);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const fetchProducts = async () => {
+    setIsRefreshing(true);
+    try {
+      const response = await fetch("/api/produk");
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const responseData = await response.json();
+      setProducts(responseData.data ?? []);
+    } catch (error) {
+      console.error("Error fetching produk:", error);
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
+
+  //   useEffect(() => {
+  //     if (!isLogin) {
+  //       push("/views/auth/login");
+  //     }
+  //   }, [isLogin, push]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-8 sm:px-6 lg:px-8">
-      <ProdukListHeroSection />
-      <ProdukListMainSection />
+    <div>
+      <h1>Daftar Produk</h1>
+      <button
+        type="button"
+        onClick={fetchProducts}
+        disabled={isRefreshing}
+        style={{
+          marginBottom: "16px",
+          padding: "10px 16px",
+          backgroundColor: isRefreshing ? "#9CA3AF" : "#2563EB",
+          color: "#FFFFFF",
+          border: "none",
+          borderRadius: "8px",
+          fontSize: "14px",
+          fontWeight: 600,
+          cursor: isRefreshing ? "not-allowed" : "pointer",
+        }}
+      >
+        {isRefreshing ? "Memuat data..." : "Refresh Data"}
+      </button>
+      {product.map((product: ProductType) => (
+        <div key={product.id}>
+          <h2>Nama: {product.name}</h2>
+          <p>Harga: {product.price}</p>
+          <p>Ukuran: {product.size}</p>
+          <p>Kategori: {product.category}</p>
+        </div>
+      ))}
     </div>
   );
 };
