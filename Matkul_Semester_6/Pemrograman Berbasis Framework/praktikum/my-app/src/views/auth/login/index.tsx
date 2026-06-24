@@ -77,7 +77,6 @@ const TampilanLogin = () => {
                 className={style.login__form__item__input}
               />
             </div>
-
             <div className={style.login__form__item}>
               <label
                 htmlFor="Password"
@@ -99,6 +98,22 @@ const TampilanLogin = () => {
               disabled={isLoading}
             >
               {isLoading ? "Memproses..." : "Login"}
+            </button>
+            <br /> <br />
+            <button
+              onClick={() => signIn("google", { callbackUrl, redirect: false })}
+              className={style.login__form__item__button}
+              disabled={isLoading}
+            >
+              {isLoading ? "Loading..." : "sign in with google"}
+            </button>
+            <br /> <br />
+            <button
+              onClick={() => signIn("github", { callbackUrl, redirect: false })}
+              className={`${style.login__form__item__button} ${style["login__form__item__button--github"]}`}
+              disabled={isLoading}
+            >
+              {isLoading ? "Loading..." : "sign in with github"}
             </button>
           </form>
           <br />

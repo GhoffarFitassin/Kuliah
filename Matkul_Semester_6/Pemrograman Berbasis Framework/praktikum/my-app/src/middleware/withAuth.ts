@@ -7,6 +7,7 @@ import {
 } from "next/server";
 
 const hanyaAdmin = ["/admin"];
+const adminDanEditor = ["/editor"];
 
 export default function withAuth(
   middleware: NextMiddleware,
@@ -28,6 +29,13 @@ export default function withAuth(
       }
 
       if (token.role !== "admin" && hanyaAdmin.includes(pathname)) {
+        return NextResponse.redirect(new URL("/", req.url));
+      }
+
+      if (
+        !["admin", "editor"].includes(token.role as string) &&
+        adminDanEditor.includes(pathname)
+      ) {
         return NextResponse.redirect(new URL("/", req.url));
       }
     }

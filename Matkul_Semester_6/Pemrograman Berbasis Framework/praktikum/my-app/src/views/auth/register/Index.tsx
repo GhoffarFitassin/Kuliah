@@ -8,6 +8,7 @@ const TampilanRegister = () => {
   const { push, query } = useRouter();
   const callbackUrl: any = query.callbackUrl || "/";
   const [error, setError] = useState("");
+  const [role, setRole] = useState("member");
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     setError("");
     event.preventDefault();
@@ -35,7 +36,7 @@ const TampilanRegister = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, fullname, password, role: "member" }),
+      body: JSON.stringify({ email, fullname, password, role }),
     });
     if (response.status === 200) {
       form.reset();
@@ -105,6 +106,22 @@ const TampilanRegister = () => {
               required
               className={style.register__form__item__input}
             />
+          </div>
+
+          <div className={style.register__form__item}>
+            <label htmlFor="role" className={style.register__form__item__label}>
+              Role
+            </label>
+            <select
+              id="role"
+              name="role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className={style.register__form__item__input}
+            >
+              <option value="member">Member</option>
+              <option value="editor">Editor</option>
+            </select>
           </div>
           <button
             type="submit"
