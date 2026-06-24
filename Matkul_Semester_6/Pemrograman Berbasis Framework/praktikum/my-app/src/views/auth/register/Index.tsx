@@ -5,7 +5,8 @@ import { useRouter } from "next/router";
 
 const TampilanRegister = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const { push } = useRouter();
+  const { push, query } = useRouter();
+  const callbackUrl: any = query.callbackUrl || "/";
   const [error, setError] = useState("");
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     setError("");
@@ -40,7 +41,7 @@ const TampilanRegister = () => {
       form.reset();
       // event.currentTarget.reset();
       setIsLoading(false);
-      push("/auth/login");
+      push(`/auth/login?callbackUrl=${encodeURIComponent(callbackUrl)}`);
     } else {
       setIsLoading(false);
       setError(
@@ -115,7 +116,12 @@ const TampilanRegister = () => {
         </form>
         <br />
         <p className={style.register__form__item__text}>
-          Sudah punya akun? <Link href="/auth/login">Ke Halaman Login</Link>
+          Sudah punya akun?{" "}
+          <Link
+            href={`/auth/login?callbackUrl=${encodeURIComponent(callbackUrl)}`}
+          >
+            Ke Halaman Login
+          </Link>
         </p>
       </div>
     </div>
