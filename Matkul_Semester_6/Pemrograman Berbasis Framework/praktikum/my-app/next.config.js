@@ -11,6 +11,22 @@ const nextConfig = {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
       },
+      {
+        protocol: "https",
+        hostname: "image.uniqlo.com",
+      },
+      {
+        protocol: "https",
+        hostname: "encrypted-tbn0.gstatic.com",
+      },
+      {
+        protocol: "https",
+        hostname: "img.ncrsport.com",
+      },
+      {
+        protocol: "https",
+        hostname: "img.lazcdn.com",
+      },
     ],
   },
 };

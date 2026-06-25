@@ -1,5 +1,6 @@
 import { ProductType } from "../../types/Product.type";
 import styles from "./detailProduct.module.scss";
+import Image from "next/image";
 
 const DetailProduk = ({
   products,
@@ -30,7 +31,14 @@ const DetailProduk = ({
       <div className={styles.produkdetail__card}>
         <div className={styles.produkdetail__media}>
           <div className={styles.produkdetail__imageFrame}>
-            <img src={products.image} alt={products.name} />
+            <Image
+              src={products.image}
+              alt={products.name}
+              fill
+              sizes="(max-width: 768px) 100vw, 520px"
+              priority
+              className={styles.produkdetail__image}
+            />
           </div>
 
           <div className={styles.produkdetail__chips}>

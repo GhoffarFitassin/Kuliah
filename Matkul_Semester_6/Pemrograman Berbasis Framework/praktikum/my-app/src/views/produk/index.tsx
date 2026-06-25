@@ -1,5 +1,6 @@
-import styles from "../../pages/produk/product.module.scss";
+import styles from "@/pages/produk/product.module.scss";
 import Link from "next/link";
+import Image from "next/image";
 
 type ProductType = {
   id: string;
@@ -18,21 +19,34 @@ const TampilanProduk = ({ products }: { products: ProductType[] }) => {
         {products.length > 0 ? (
           <>
             {products.map((products: ProductType) => (
-              <Link href={`/produk/${products.id}`} key={products.id} className={styles.produk__content__item}>
-              <div key={products.id} className={styles.produk__content__item}>
-                <div className={styles.produk__content__item__image}>
-                  <img src={products.image} alt={products.name} width={200} className={styles.produk__content__item__image}/>
+              <Link
+                href={`/produk/${products.id}`}
+                key={products.id}
+                className={styles.produk__content__item}
+              >
+                <div key={products.id} className={styles.produk__content__item}>
+                  <div className={styles.produk__content__item__image}>
+                    <Image
+                      src={products.image}
+                      alt={products.name}
+                      width={200}
+                      height={200}
+                      loading="lazy"
+                      placeholder="blur"
+                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2YwZTNkNCIvPjwvc3ZnPg=="
+                      className={styles.produk__content__item__image}
+                    />
+                  </div>
+                  <h4 className={styles.produk__content__item__name}>
+                    {products.name}
+                  </h4>
+                  <p className={styles.produk__content__item__category}>
+                    {products.category}
+                  </p>
+                  <p className={styles.produk__content__item__price}>
+                    Rp {products.price.toLocaleString()}
+                  </p>
                 </div>
-                <h4 className={styles.produk__content__item__name}>
-                  {products.name}
-                </h4>
-                <p className={styles.produk__content__item__category}>
-                  {products.category}
-                </p>
-                <p className={styles.produk__content__item__price}>
-                  Rp {products.price.toLocaleString()}
-                </p>
-              </div>
               </Link>
             ))}
           </>

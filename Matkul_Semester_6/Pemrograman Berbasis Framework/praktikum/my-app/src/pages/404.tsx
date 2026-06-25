@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { Merriweather } from "next/font/google";
 import styles from "@/styles/404.module.scss";
 
@@ -26,9 +27,11 @@ const Custom404 = () => {
         <span className={styles.glow} aria-hidden="true" />
         <div className={styles.card}>
           <p className={styles.kicker}>Oops!</p>
-          <img
+          <Image
             src="/page-not-found.svg"
             alt="Ilustrasi halaman tidak ditemukan"
+            width={400}
+            height={200}
             className={styles.error_image}
           />
           <h1 id="not-found-title" className={styles.title}>

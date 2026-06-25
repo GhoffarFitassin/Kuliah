@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import Navbar from "../Navbar/index";
 import Footer from "../Footer/index";
+import { Roboto } from "next/font/google";
 
 const disableNavbar = new Set([
   "/auth/login",
@@ -10,6 +11,11 @@ const disableNavbar = new Set([
   "/404",
 ]);
 
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
 type AppShellProps = {
   children: React.ReactNode;
 };
@@ -18,7 +24,7 @@ const AppShell = (props: AppShellProps) => {
   const { children } = props;
   const { pathname } = useRouter();
   return (
-    <main>
+    <main className={roboto.className}>
       {!disableNavbar.has(pathname) && <Navbar />}
       {children}
       {!disableNavbar.has(pathname) && <Footer />}

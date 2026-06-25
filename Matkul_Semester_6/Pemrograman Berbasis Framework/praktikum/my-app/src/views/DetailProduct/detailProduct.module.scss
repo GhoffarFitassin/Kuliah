@@ -36,6 +36,7 @@
   }
 
   &__imageFrame {
+    position: relative;
     padding: 16px;
     border-radius: 24px;
     background: linear-gradient(
@@ -44,16 +45,14 @@
       rgba(255, 255, 255, 0.95)
     );
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    aspect-ratio: 1 / 1;
+    max-height: 520px;
+  }
 
-    img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      max-height: 520px;
-      object-fit: contain;
-      border-radius: 18px;
-      background: #fff;
-    }
+  &__image {
+    object-fit: contain;
+    border-radius: 18px;
+    background: #fff;
   }
 
   &__chips {

@@ -1,6 +1,7 @@
 import styles from "./navbar.module.css";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import Script from "next/dist/client/script";
 
 const Navbar = () => {
   const { data }: any = useSession();
@@ -9,7 +10,12 @@ const Navbar = () => {
   console.log("data", data);
   return (
     <div className={styles.navbar}>
-      <div className={styles.navbar__brand}>MyApp</div>
+      {/* <div className={styles.navbar__brand}>MyApp</div> */}
+
+      <div className={styles.navbar__brand} id="title"></div>
+      <Script id="title-script" strategy="lazyOnload">
+        {`document.getElementById('title').innerHTML = 'MyApp';`}
+      </Script>
 
       <div className={styles.navbar__right}>
         {data ? (
@@ -20,8 +26,11 @@ const Navbar = () => {
                 <Image
                   src={data.user.image}
                   alt={data.user.fullname}
-                  width={42}
-                  height={42}
+                  width={50}
+                  height={50}
+                  priority
+                  placeholder="blur"
+                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMjUiIGZpbGw9IiNmMGUzZDQiLz48L3N2Zz4="
                   className={styles.navbar__user__image}
                 />
               )}
