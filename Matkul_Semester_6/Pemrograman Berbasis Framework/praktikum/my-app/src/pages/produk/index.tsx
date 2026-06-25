@@ -55,7 +55,7 @@ const ProdukPage = () => {
   // console.log("isLoading:", isLoading);
 
   return (
-    <div>
+    <div data-testid="product-page">
       {/* <button
         type="button"
         onClick={fetchProducts}
@@ -74,7 +74,7 @@ const ProdukPage = () => {
       >
         {isRefreshing ? "Memuat data..." : "Refresh Data"}
       </button> */}
-      <TampilanProduk products={isLoading ? [] : data.data} />
+      <TampilanProduk products={isLoading ? [] : data?.data} />
     </div>
   );
 };
